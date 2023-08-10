@@ -280,6 +280,10 @@ function App() {
                   </Item>
                 </Grid>
               </Grid>
+              <img
+                src="/Core-Values-Illustration.png"
+                width={isMobile ? 350 : 500}
+              ></img>
             </Box>
           </Item>
         </Grid>
