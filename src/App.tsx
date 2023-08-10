@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import logo from "./logo.svg";
 import "./App.css";
 import {
   AppBar,
@@ -23,6 +22,8 @@ import HorizontalRuleIcon from "@mui/icons-material/HorizontalRule";
 
 function App() {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+  const [pageAboutUs, setPageAboutUs] = useState<number>(1);
+
   const open = Boolean(anchorEl);
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     setAnchorEl(event.currentTarget);
@@ -37,6 +38,48 @@ function App() {
     textAlign: "center",
     color: theme.palette.text.secondary,
   }));
+
+  const getTitleAboutUs = () => {
+    switch (pageAboutUs) {
+      case 1:
+        return "Who we are";
+      case 2:
+        return "What we do";
+      case 3:
+        return "How we do";
+
+      default:
+        break;
+    }
+  };
+
+  const getSubtitleAboutUs = () => {
+    switch (pageAboutUs) {
+      case 1:
+        return "Technology Company";
+      case 2:
+        return "Professional Brand Management";
+      case 3:
+        return "Strategize, Design, Collaborate";
+
+      default:
+        break;
+    }
+  };
+
+  const getDescAboutUs = () => {
+    switch (pageAboutUs) {
+      case 1:
+        return "Sed ut perspiciatis unde omnis iste natus sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.";
+      case 2:
+        return "Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.";
+      case 3:
+        return "Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse sequam nihil molestiae consequatur.";
+
+      default:
+        break;
+    }
+  };
 
   const sizeWindow = useWindowSize();
   const isMobile = sizeWindow.width < 767.98;
@@ -142,7 +185,7 @@ function App() {
               pl={isMobile ? 5 : 10}
             >
               <Typography variant="h4" color={"#029FE4"} align={"left"}>
-                Who we are
+                {getTitleAboutUs()}
               </Typography>
               <Typography
                 variant="h6"
@@ -150,20 +193,17 @@ function App() {
                 fontWeight={"bold"}
                 pt={3}
               >
-                Technology Company
+                {getSubtitleAboutUs()}
               </Typography>
               <Typography variant="subtitle2" align={"left"} pt={1}>
-                Sed ut perspiciatis unde omnis iste natus sit voluptatem
-                accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
-                quae ab illo inventore veritatis et quasi architecto beatae
-                vitae dicta sunt explicabo.
+                {getDescAboutUs()}
               </Typography>
             </Box>
 
             <Container maxWidth={false} sx={{ minHeight: 100 }} disableGutters>
               <Grid container pl={isMobile ? "17px" : "39px"}>
                 <Grid item xs={isMobile ? 3 : 1}>
-                  <Item sx={{ boxShadow: "unset" }}>01 / 03</Item>
+                  <Item sx={{ boxShadow: "unset" }}>0{pageAboutUs} / 03</Item>
                 </Grid>
                 <Grid item xs={isMobile ? 2 : 9}></Grid>
                 <Grid item xs={isMobile ? 7 : 2}>
@@ -171,10 +211,12 @@ function App() {
                     <Button
                       variant="outlined"
                       startIcon={<ArrowBackIcon />}
+                      onClick={() => setPageAboutUs(pageAboutUs - 1)}
                     ></Button>
                     <Button
                       variant="contained"
                       endIcon={<ArrowForwardIcon />}
+                      onClick={() => setPageAboutUs(pageAboutUs + 1)}
                     ></Button>
                   </Item>
                 </Grid>
