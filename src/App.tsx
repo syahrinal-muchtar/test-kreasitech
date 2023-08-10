@@ -10,6 +10,7 @@ import {
   Menu,
   MenuItem,
   Paper,
+  Select,
   styled,
   Toolbar,
   Typography,
@@ -23,6 +24,7 @@ import HorizontalRuleIcon from "@mui/icons-material/HorizontalRule";
 function App() {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const [pageAboutUs, setPageAboutUs] = useState<number>(1);
+  const [branch, setBranch] = useState<string>("1");
 
   const open = Boolean(anchorEl);
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
@@ -326,6 +328,88 @@ function App() {
                 src="/Core-Values-Illustration.png"
                 width={isMobile ? 350 : 500}
               ></img>
+            </Box>
+          </Item>
+
+          <Item sx={{ backgroundColor: "#509FDD", borderRadius: 0 }}>
+            <Box
+              pt={isMobile ? 4 : 6}
+              pr={isMobile ? 5 : 30}
+              pb={5}
+              pl={isMobile ? 5 : 10}
+              sx={{ backgroundColor: "white" }}
+            >
+              <Typography variant="h4" color={"#029FE4"} align={"left"}>
+                OUR SPECIALITY
+              </Typography>
+              <Typography variant="subtitle1" align={"left"} pt={1} pb={1}>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis
+                euismod libero vel leo auctor, in venenatis nulla consequat. Sed
+                commodo nunc sit amet congue aliquam.
+              </Typography>
+              <img src="/PERKS.png" width={isMobile ? 300 : 500}></img>
+              <Typography variant="subtitle2" pt={1} pb={1}>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis
+                euismod libero vel leo auctor, in venenatis nulla consequat. Sed
+                commodo nunc sit amet congue aliquam.
+              </Typography>
+            </Box>
+          </Item>
+
+          <Item sx={{ backgroundImage: `url("/BG.png")`, borderRadius: 0 }}>
+            <Box
+              pt={isMobile ? 4 : 6}
+              pr={isMobile ? 5 : 30}
+              pb={5}
+              pl={isMobile ? 5 : 10}
+            >
+              <Typography variant="h4" color={"white"} align={"left"}>
+                <img src="/nextJs-logo.webp" height={35} /> Company
+              </Typography>
+
+              <Box
+                pt={isMobile ? 4 : 6}
+                pr={isMobile ? 5 : 30}
+                pb={5}
+                pl={isMobile ? 2 : 10}
+                sx={{ backgroundColor: "white" }}
+              >
+                <Select
+                  labelId="demo-simple-select-label"
+                  id="demo-simple-select"
+                  value={branch}
+                  label="branch"
+                  size="small"
+                  onChange={(e) => setBranch(e.target.value)}
+                >
+                  <MenuItem value={1}>TECHNOLOGY DEPARTMENT</MenuItem>
+                  <MenuItem value={2}>HR DEPARTMENT</MenuItem>
+                  <MenuItem value={3}>Marketing DEPARTMENT</MenuItem>
+                </Select>
+                <Typography
+                  variant="subtitle1"
+                  color={"#25A0D8"}
+                  align={"left"}
+                  pt={5}
+                >
+                  Jl. Lembong No 8 Kel. Braga Kec. Sumur Bandung, Kota Bandung,
+                  Jawa Barat
+                </Typography>
+              </Box>
+              <Typography
+                variant="subtitle1"
+                color={"white"}
+                align={"left"}
+                pt={2}
+              >
+                Who We Are
+              </Typography>
+              <Typography variant="subtitle1" color={"white"} align={"left"}>
+                Our Values
+              </Typography>
+              <Typography variant="subtitle1" color={"white"} align={"left"}>
+                The Perks
+              </Typography>
             </Box>
           </Item>
         </Grid>
