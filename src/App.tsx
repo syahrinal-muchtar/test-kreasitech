@@ -378,7 +378,6 @@ function App() {
                   labelId="demo-simple-select-label"
                   id="demo-simple-select"
                   value={branch}
-                  label="branch"
                   size="small"
                   onChange={(e) => setBranch(e.target.value)}
                 >
